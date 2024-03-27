@@ -21,9 +21,9 @@ const HeroPage = () => {
       <p className='text-red-200 font-light' >Access Before April</p>
       <ArrowRight className='text-red-200' strokeWidth={1} />
     </div>
-    <h1 className='text-white text-5xl font-semibold mt-8' >Empower Your Success</h1>
-    <h1 className='text-white text-5xl mt-4 font-semibold text-center' > Transform Your Ideas <span className='text-blue-400' >   With help.ai</span> </h1>
-    <p className='text-zinc-500 mt-8 text-center ' >An operating system for students to master difficult concepts, <br /> ace tests, and write with confidence.</p>
+    <h1 className='text-white md:text-5xl text-3xl font-semibold mt-8 text-center tracking-normal leading-tight' >Empower Your Success</h1>
+    <h1 className='text-white md:text-5xl text-3xl mt-4 font-semibold tracking-normal leading-tight text-center' > Transform Your Ideas <span className='text-blue-400' >   With help.ai</span> </h1>
+    <p className='text-zinc-500 mt-8 text-center  ' >An operating system for students to master difficult concepts, <br /> ace tests, and write with confidence.</p>
 
     <Button className='bg-white mt-8 text-black'  size={'lg'} >Genreate Now</Button>
    </div>
