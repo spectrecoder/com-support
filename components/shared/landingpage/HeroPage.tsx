@@ -29,10 +29,10 @@ const HeroPage = () => {
     
     <p className='text-zinc-500 mt-8 text-center  ' >An operating system for students to master difficult concepts, <br /> ace tests, and write with confidence.</p>
 
-      <div className='h-16   bg-zinc-900 border-[1px] border-zinc-800 rounded-xl mt-8 flex justify-between items-center px-4 gap-4' >
-        <p className='text-zinc-400 font-light text-sm' >Captions , Cover letter , roadmap and may more</p>
+      <div className='h-16 bg-zinc-900 border-[1px] border-zinc-800 rounded-xl mt-8 flex justify-between items-center md:px-4 px-10 gap-4' >
+        <p className='text-zinc-400 font-light text-sm md:block hidden' >Captions , Cover letter , roadmap and may more</p>
 
-        <Button className='bg-red-400 text-black hover:bg-zinc-900 hover:text-white' >
+        <Button className='md:bg-red-400 bg-transparent text-white  md:text-black hover:bg-zinc-900 hover:text-white' >
           <Sparkles className='mr-1 hover:text-white' size={17} strokeWidth={1.4} />
           Genreate With HelpAi
         </Button>
