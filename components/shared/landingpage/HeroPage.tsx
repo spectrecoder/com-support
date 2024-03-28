@@ -2,7 +2,7 @@ import { Spotlight } from '@/components/ui/Spotlight'
 import React from 'react'
 import DeskNav from './navigations/DeskNav'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Radio } from 'lucide-react'
+import { ArrowRight, Radio, Sparkle, Sparkles } from 'lucide-react'
 import Image from 'next/image'
 
 const HeroPage = () => {
@@ -29,7 +29,15 @@ const HeroPage = () => {
     
     <p className='text-zinc-500 mt-8 text-center  ' >An operating system for students to master difficult concepts, <br /> ace tests, and write with confidence.</p>
 
-    <Button className='bg-white mt-8 text-black'  size={'lg'} >Genreate Now</Button>  
+      <div className='h-16   bg-zinc-900 border-[1px] border-zinc-800 rounded-xl mt-8 flex justify-between items-center px-4 gap-4' >
+        <p className='text-zinc-400 font-light text-sm' >Captions , Cover letter , roadmap and may more</p>
+
+        <Button className='bg-red-400 text-black hover:bg-zinc-900 hover:text-white' >
+          <Sparkles className='mr-1 hover:text-white' size={17} strokeWidth={1.4} />
+          Genreate With HelpAi
+        </Button>
+
+      </div>
 
     <div className='' >
         <Image className='h-[600px] w-auto '  src={`/hero.svg`} height={1500} width={1500}alt='heroimage' />
