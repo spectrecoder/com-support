@@ -1,19 +1,38 @@
 import React from 'react'
+import Markdown from 'react-markdown'
 
 type LinkedintextProps = {
     response: string
+    type:"ROADMAP" | "LINKEDIN" | "COVERLETTER"
 }
 
-const LinkedinText = ({response} : LinkedintextProps) => {
-    const bulletPoints = response.split(/\d+\./).filter(item => item.trim() !== '');
+const LinkedinText = ({response , type} : LinkedintextProps) => {
+  let resText : any = [];
+  if(type == "LINKEDIN"){
+      resText = response.split(/\d+\./).filter(item => item.trim() !== '');
+  }
+   
+
+    if(type=='ROADMAP'){
+    const bulletPoints = response.split('\n\n');
+    for(let i =0;i<bulletPoints.length;i++){
+      const parts = bulletPoints[i].split(/ - \[.*?\]\(.*?\)/);
+      const formattedData = parts.join("\n\n").replace(/\[(.*?)\]\((.*?)\)/g, "$1");
+      resText.push(formattedData)
+    }
+
+    }
+
+
 
   return (
     <div>
       {
-        bulletPoints.map((curr:any , index:any)=>{
+        resText.map((curr:any , index:any)=>{
            return <div key={index}>
-            <p className='text-white ml-11 mt-1 font-light' > <span className='font-medium text-red-300' >{index+1}. </span> {curr.trim()}</p>
+              <Markdown className="text-white font-light ml-11 mt-4" >{curr.trim()}</Markdown>
             <br />
+            
            </div>
         })
       }

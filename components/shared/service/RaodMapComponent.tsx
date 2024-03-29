@@ -1,37 +1,39 @@
-"use client";
-import React, { useState } from "react";
-import DeskNav from "../landingpage/navigations/DeskNav";
+"use client"
+import { Button } from '@/components/ui/button';
+import { Sparkles } from 'lucide-react';
+import React, { useState } from 'react'
+import LinkedinText from './LinkedinText';
+import Image from 'next/image';
+import DeskNav from '../landingpage/navigations/DeskNav';
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
-import { Sparkles } from "lucide-react";
-import { genreateLinkedincaption } from "@/lib/actions/helpai.action";
-import Image from "next/image";
-import LinkedinText from "./LinkedinText";
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+  } from "@/components/ui/select";
+import { genreateLinkedincaption, GenreateRoadMapsWithhelpai } from '@/lib/actions/helpai.action';
+  
 
-const LinkedinCaptionGenreator = () => {
-  const [Prompt, setPrompt] = useState<string>("");
+const RaodMapComponent = () => {
+    const [Prompt, setPrompt] = useState<string>("");
   const [Tone, setTone] = useState<string>("");
   const [Keywords, setKeywords] = useState<string>("");
   const [Loading, setLoading] = useState<boolean>(false);
   const [showLogo, setshowLogo] = useState<boolean>(true);
   const [Response, setResponse] = useState<any>(null);
 
+
+  
   // calling the action
 
   const handleSubmit = async () => {
     try {
       setshowLogo(false);
       setLoading(true);
-      const res = await genreateLinkedincaption({
-        keyword: Keywords,
-        prompt: Prompt,
-        tone: Tone,
+      const res = await GenreateRoadMapsWithhelpai({
+        topic: Prompt,
+        days: Tone,
       });
       res.split("\n\n");
       setResponse(res);
@@ -45,7 +47,7 @@ const LinkedinCaptionGenreator = () => {
   return (
     <div className="min-h-screen w-full bg-black flex flex-col justify-between items-center">
       <div className="w-full">
-        <DeskNav />
+        <DeskNav/>
 
 
 
@@ -91,7 +93,7 @@ const LinkedinCaptionGenreator = () => {
             {/* response div */}
 
             <div>
-              <LinkedinText type="LINKEDIN"  response={Response} />
+              <LinkedinText type='ROADMAP' response={Response} />
            
             </div>
           </div>
@@ -104,7 +106,7 @@ const LinkedinCaptionGenreator = () => {
             setPrompt(e.target.value);
           }}
           className="h-14 md:w-[800px] w-full bg-zinc-800 bg-opacity-30 outline-none  rounded-md px-4 border-[1px] border-zinc-900 placeholder:font-light placeholder:text-zinc-400 placeholder:text-sm  text-white"
-          placeholder="Please Describe your post... "
+          placeholder="Technology you want to learn... "
         />
 
         {/* select componenet */}
@@ -115,12 +117,13 @@ const LinkedinCaptionGenreator = () => {
             }}
           >
             <SelectTrigger className="md:w-[380px] bg-opacity-30 w-full bg-zinc-800 border-zinc-900 text-zinc-400">
-              <SelectValue placeholder="Select Tone" />
+              <SelectValue placeholder="Select Duration" />
             </SelectTrigger>
-            <SelectContent className="bg-zinc-900 text-white ">
-              <SelectItem value="confideint">Proffessinol</SelectItem>
-              <SelectItem value="professinol">Confideint</SelectItem>
-              <SelectItem value="casual">Casual</SelectItem>
+            <SelectContent className="bg-zinc-950 text-white border-zinc-800 hover:bg-zinc-900">
+              <SelectItem value="15">15-Days</SelectItem>
+              <SelectItem value="10">30-Days</SelectItem>
+              <SelectItem value="60">2-Months</SelectItem>
+              <SelectItem value="90">3-Months</SelectItem>
             </SelectContent>
           </Select>
 
@@ -129,7 +132,7 @@ const LinkedinCaptionGenreator = () => {
               setKeywords(e.target.value);
             }}
             className="h-10 md:w-[400px] w-full bg-opacity-30 rounded-md bg-zinc-800 border-[1px] border-zinc-900 placeholder:font-light placeholder:text-zinc-400 placeholder:text-sm  text-white px-2"
-            placeholder="Keywords..."
+            placeholder="Additionols..."
           />
         </div>
         <Button
@@ -142,6 +145,6 @@ const LinkedinCaptionGenreator = () => {
       </div>
     </div>
   );
-};
+}
 
-export default LinkedinCaptionGenreator;
+export default RaodMapComponent
