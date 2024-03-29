@@ -10,9 +10,9 @@ const LinkedinText = ({response} : LinkedintextProps) => {
   return (
     <div>
       {
-        bulletPoints.map((curr:any)=>{
-           return <div>
-            <p className='text-white ml-11 mt-1 font-light' >{curr.trim()}</p>
+        bulletPoints.map((curr:any , index:any)=>{
+           return <div key={index}>
+            <p className='text-white ml-11 mt-1 font-light' > <span className='font-medium text-red-300' >{index+1}. </span> {curr.trim()}</p>
             <br />
            </div>
         })

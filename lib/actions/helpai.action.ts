@@ -17,7 +17,7 @@ const openai = new OpenAI({
     try {
         console.log("this is working");
         
-        const customMessage = "suppose you are a linkedin caption genreator , you have to write a caption for"+prompt+ "please write a linkedin caption in 150 words by using"+tone+" words and try to genreate atleast 5 captions and try to add hashtag based on the keyword like :" +keyword + " and please try to add some emoji in caption so that it look nice";
+        const customMessage = "suppose you are a linkedin caption genreator , you have to write a caption for"+prompt+ "please write a linkedin caption consist more than 200 words by using"+tone+" words and try to genreate atleast 5 captions and try to add hashtag based on the keyword like :" +keyword + " and please try to add some emoji in caption so that it look nice";
         const captionRes = await openai.chat.completions.create({
             model:"gpt-3.5-turbo",
             messages:[

@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const ServicesComponent = () => {
@@ -11,6 +12,7 @@ const ServicesComponent = () => {
       {/* serices card */}
 
       <div className='flex justify-start items-start mt-8 ' >
+        <Link href={`/services/linkedin`} >
         <div className='h-[400px] w-[350px] cursor-pointer  bg-gradient-to-b from-zinc-900 to-zinc-950 rounded-xl' >
             <div className='h-2/3 w-full ' >
             </div>
@@ -20,7 +22,7 @@ const ServicesComponent = () => {
                 <p className='text-[12px] font-normal mt-2 text-zinc-500' >Genreate your linkedin post caption with the help.ai and save your valuable time</p>
             </div>
 
-        </div>
+        </div></Link>
 
       </div>
     </div>
