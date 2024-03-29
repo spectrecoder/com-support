@@ -27,12 +27,12 @@ const HeroPage = () => {
       <p className='text-white font-light text-[12px]' >Access Before April</p>
       <ArrowRight className='text-white ' strokeWidth={1} size={15} />
     </div>
-    <h1 className='bg-gradient-to-r from-white via-zinc-300 to-zinc-500 text-transparent bg-clip-text md:text-6xl text-3xl font-bold mt-8 text-center tracking-normal leading-tight' >Seamlessly sync articles</h1>
-    <h1 className='bg-gradient-to-r from-white via-zinc-300 to-zinc-500 text-transparent bg-clip-text md:text-6xl text-3xl mt-4 font-bold tracking-normal leading-tight text-center' > and feeds from the web.  </h1>
+    <h1 className='bg-gradient-to-r mx-4 from-white via-zinc-300 to-zinc-500 text-transparent bg-clip-text md:text-6xl md:mx-[20rem] text-4xl font-bold mt-8 text-center tracking-normal leading-tight' >Seamlessly shape your ideas and craft in reality</h1>
+   
     
   
     
-    <p className='text-zinc-500 mt-8 text-center  ' >An operating system for students to master difficult concepts, <br /> ace tests, and write with confidence.</p>
+    <p className='text-zinc-500 md:mt-8 text-sm md:text-base text-center mt-4 md:mx-[23rem] mx-10 ' >Tired of genreating your social captions , getting no proper roadmap , don't know how to write cold email , <span className='md:inline-block hidden' > don't worry help.ai is here to help you ,</span>  genreate anything you want with help.ai</p>
 
       <Link href={`/services`} >
       <div className='h-16 bg-zinc-950 border-[1px] border-zinc-800 rounded-xl mt-8 flex justify-between items-center md:px-4 px-10 gap-4' >
