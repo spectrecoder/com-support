@@ -13,6 +13,7 @@ import { Sparkles } from "lucide-react";
 import { genreateLinkedincaption } from "@/lib/actions/helpai.action";
 import Image from "next/image";
 import LinkedinText from "./LinkedinText";
+import { useChat } from "ai/react";
 
 const LinkedinCaptionGenreator = () => {
   const [Prompt, setPrompt] = useState<string>("");
@@ -22,9 +23,14 @@ const LinkedinCaptionGenreator = () => {
   const [showLogo, setshowLogo] = useState<boolean>(true);
   const [Response, setResponse] = useState<any>(null);
 
+
+  const { messages, input, handleInputChange, handleSubmit } = useChat({
+    api:'/api/genai'
+  });
+
   // calling the action
 
-  const handleSubmit = async () => {
+  const handleSubmitT = async () => {
     try {
       setshowLogo(false);
       setLoading(true);
@@ -91,18 +97,30 @@ const LinkedinCaptionGenreator = () => {
             {/* response div */}
 
             <div>
-              <LinkedinText type="LINKEDIN"  response={Response} />
+              {
+                messages.map((m)=>{
+                  return <div>
+                    {m.content}
+                  </div>
+                })
+              }
+              {/* <LinkedinText type="LINKEDIN"  response={Response} /> */}
            
             </div>
           </div>
         )}
       </div>
-
+              <form onSubmit={(event)=>{
+                event.preventDefault();
+                handleSubmit(event , {
+                   data:{
+                    prompt:input
+                   }
+                })
+              }} >
       <div className="w-full px-4 md:px-0 md:mb-10 mb-20 flex flex-col items-center justify-center">
-        <input
-          onChange={(e) => {
-            setPrompt(e.target.value);
-          }}
+        <input value={input} 
+          onChange={handleInputChange}
           className="h-14 md:w-[800px] w-full bg-zinc-800 bg-opacity-30 outline-none  rounded-md px-4 border-[1px] border-zinc-900 placeholder:font-light placeholder:text-zinc-400 placeholder:text-sm  text-white"
           placeholder="Please Describe your post... "
         />
@@ -133,13 +151,14 @@ const LinkedinCaptionGenreator = () => {
           />
         </div>
         <Button
-          onClick={handleSubmit}
+          type="submit"
           className="mt-4 md:w-[800px] w-full bg-white text-black rounded-full"
         >
           <Sparkles size={17} strokeWidth={1.5} />
           Genreate With Help.ai
         </Button>
       </div>
+      </form>
     </div>
   );
 };

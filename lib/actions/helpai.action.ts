@@ -3,14 +3,21 @@
 import { GenreateLinkedinCaptionParams, RoadmapProps } from "@/types";
 import { error } from "console";
 import OpenAI from "openai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import { StreamingTextResponse , GoogleGenerativeAIStream } from "ai";
 
 
 
-
+// OPEN AI CONFIGURATION
 const openai = new OpenAI({
     apiKey: process.env.OPEN_AI_KEY,
     dangerouslyAllowBrowser: true // This is the default and can be omitted
   });
+
+
+
+
+
 
 
   export const genreateLinkedincaption = async ({keyword , prompt , tone}: GenreateLinkedinCaptionParams)=>{
@@ -64,3 +71,9 @@ const openai = new OpenAI({
         
     }
   }
+
+
+
+
+
+
