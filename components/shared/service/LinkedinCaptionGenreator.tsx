@@ -9,11 +9,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { Sparkles } from "lucide-react";
+import { Bot, Sparkles, User2 } from "lucide-react";
 import { genreateLinkedincaption } from "@/lib/actions/helpai.action";
 import Image from "next/image";
 import LinkedinText from "./LinkedinText";
 import { useChat } from "ai/react";
+import Markdown from "react-markdown";
 
 const LinkedinCaptionGenreator = () => {
   const [Prompt, setPrompt] = useState<string>("");
@@ -24,7 +25,7 @@ const LinkedinCaptionGenreator = () => {
   const [Response, setResponse] = useState<any>(null);
 
 
-  const { messages, input, handleInputChange, handleSubmit } = useChat({
+  const { messages, input, handleInputChange, handleSubmit , isLoading } = useChat({
     api:'/api/genai'
   });
 
@@ -77,33 +78,43 @@ const LinkedinCaptionGenreator = () => {
           )
         }
 
-        {Response && (
+
+
+        {messages.length > 0   && (
           <div className="md:h-[400px] mt-8 md:mt-2 h-[500px] mx-8 md:mx-96 overflow-x-scroll no-scrollbar">
             {/* aiheading */}
             <div className="flex items-center gap-3">
-              <div className="h-8 w-8 bg-zinc-800 rounded-full flex justify-center items-center">
-                <Image
-                  className="h-6 w-auto "
-                  src={`/tab.svg`}
-                  height={900}
-                  width={900}
-                  alt="logoimage"
-                />
-              </div>
-              <p className="text-xl text-white">Help.ai</p>
+          
             </div>
            
 
             {/* response div */}
 
-            <div>
-              {
-                messages.map((m)=>{
-                  return <div>
-                    {m.content}
-                  </div>
-                })
-              }
+            <div className="flex flex-col-reverse whitespace-pre-wrap" >
+            {messages.map((m, index) => {
+          return (
+            <div
+            className={`p-4 shadow-md rounded-md ml-10 relative  ${
+              m.role === "user" ? "bg-stone-300 hidden" : ""
+            }`}
+          >
+            <div className="flex items-center gap-2" >
+              <div className="h-10 w-10 bg-zinc-800 rounded-full flex justify-center items-center" >
+                <Image className="h-8 w-8 object-contain" src={`/tab.svg`} height={1000} width={1000} alt="logo" />
+              </div>
+              <p className="text-white" >help.ai</p>
+            </div>
+           <p className="text-white font-light leading-relaxed tracking-wide mt-2 ml-11" >{m.content}</p>
+            {m.role === "user" ? (
+              <User2 className="absolute top-2 -left-10 border rounded-full p-1 shadow-lg" />
+            ) : (
+              <div className="h-8 w-8  rounded-full flex justify-center items-center">
+             
+            </div>
+            )}
+          </div>
+          );
+        })}
               {/* <LinkedinText type="LINKEDIN"  response={Response} /> */}
            
             </div>
@@ -111,6 +122,7 @@ const LinkedinCaptionGenreator = () => {
         )}
       </div>
               <form onSubmit={(event)=>{
+                setshowLogo(false);
                 event.preventDefault();
                 handleSubmit(event , {
                    data:{
@@ -162,5 +174,7 @@ const LinkedinCaptionGenreator = () => {
     </div>
   );
 };
+
+
 
 export default LinkedinCaptionGenreator;
