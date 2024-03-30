@@ -17,7 +17,7 @@ const ServicesComponent = () => {
     {
       name:"Roadmap Genreator",
       desc:"Genreate your roadmap for any technology whenever you want with the help of help.ai and save your valuable time",
-      link:"/services/linkedin"
+      link:"/services/resume"
     },
   ]
   return (
