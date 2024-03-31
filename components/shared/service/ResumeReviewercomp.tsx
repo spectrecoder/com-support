@@ -25,8 +25,21 @@ const ResumeReviewercomp = () => {
 
     const handleSubmit = async()=>{
 
-        await resumeHelpAi(UploadData);
+        // await resumeHelpAi(UploadData);
+
+        const BodyPara = {
+            resume:UploadData
+        }
+
+        const nextBodyData = JSON.stringify(BodyPara);
+        const res = await fetch("/api/resume" , {
+            method:'POST',
+            body:nextBodyData
+        });
+
+        console.log(res.body);
         
+
         // await resumeAi({imageData:UploadData});
         // const formData = new FormData();
         // formData.append('resume' , ',sknd');

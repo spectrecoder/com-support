@@ -88,8 +88,10 @@ function fileToGenerativePart(path : any, mimeType : any) {
 
 
   export const resumeHelpAi = async (ImageBase: any)=>{
-    
+    try {
     const genai = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
+    console.log("connection successfull");
+    
     const prompt = "what is in this image?";
     const parts = [
         {
@@ -103,13 +105,20 @@ function fileToGenerativePart(path : any, mimeType : any) {
         }
     ];
 
+    console.log("Parts Value:" , parts );
+    
+
 
     const model = genai.getGenerativeModel({model:'gemini-pro-vision'});
+
+    console.log("Model Created");
+    
     const response = await model.generateContent({contents:[{role:'user' , parts}]});
-    console.log(response.response.text);
+    console.log("Response Created");
     
     
-    try {
+    
+    
         
     } catch (error) {
         console.log(error);
