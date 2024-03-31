@@ -3,17 +3,24 @@ import React, { useState } from 'react'
 import DeskNav from '../landingpage/navigations/DeskNav'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
+import { resumeAi } from '@/lib/actions/helpai.action'
+import { convertDataContentToBase64String } from 'ai'
 
 const ResumeReviewercomp = () => {
 
     const [selectedFile, setselectedFile] = useState<any>(null);
+    const [UploadData, setUploadData] = useState<any>(null);
     
     const handleImage = (event : any )=>{
         const fileData = event.target.files[0];
+        const base64Data =  convertDataContentToBase64String(fileData);
         setselectedFile(fileData);
+        const uploadurl = URL.createObjectURL(fileData);
+        setUploadData(base64Data);
     }
 
     const handleSubmit = async()=>{
+        // await resumeAi({imageData:UploadData});
         const formData = new FormData();
         formData.append('resume' , selectedFile);
         try {

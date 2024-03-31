@@ -16,7 +16,7 @@
     "ai": "^3.0.16",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "formidable": "^3.2.0",
+    "formidable": "^3.5.1",
     "framer-motion": "^11.0.22",
     "lucide-react": "^0.363.0",
     "mini-svg-data-uri": "^1.4.4",

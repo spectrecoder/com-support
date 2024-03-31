@@ -5,6 +5,7 @@ import { error } from "console";
 import OpenAI from "openai";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { StreamingTextResponse , GoogleGenerativeAIStream } from "ai";
+import fs from 'fs';
 
 
 
@@ -68,6 +69,42 @@ const openai = new OpenAI({
     } catch (error) {
         console.log(error);
         throw new Error("some error found");
+        
+    }
+  }
+
+
+  // Converts local file information to a GoogleGenerativeAI.Part object.
+function fileToGenerativePart(path : any, mimeType : any) {
+    return {
+      inlineData: {
+        data: Buffer.from(fs.readFileSync(path)).toString("base64"),
+        mimeType
+      },
+    };
+  }
+  
+
+  export const resumeAi = async  ({imageData} : any)=>{
+    try {
+        console.log("everything is working fine");
+        console.log(imageData);
+        const genai =  new GoogleGenerativeAI(process.env.GEMENI_API_KEY!);
+        console.log("genai created");
+        
+        const model = genai.getGenerativeModel({model:'gemini-pro-vision'});
+        console.log("model created");
+        const prompt = "what is in this image";
+        console.log("prmpt created" , prompt);
+        console.log("imagedata creating");
+        const imageparts = fileToGenerativePart(imageData , 'image/jpg')
+        console.log("Imagedata created" , imageData);
+        const result = await model.generateContent([prompt , imageparts]);
+
+        const res = await result.response.text();
+        console.log("this is res" , res);
+    } catch (error) {
+        console.log(error);
         
     }
   }
