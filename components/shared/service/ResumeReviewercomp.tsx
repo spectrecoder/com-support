@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import DeskNav from '../landingpage/navigations/DeskNav'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
-import { resumeAi } from '@/lib/actions/helpai.action'
 import { convertDataContentToBase64String } from 'ai'
+import { resumeHelpAi } from '@/lib/actions/helpai.action'
 
 const ResumeReviewercomp = () => {
 
@@ -13,33 +13,40 @@ const ResumeReviewercomp = () => {
     
     const handleImage = (event : any )=>{
         const fileData = event.target.files[0];
-        const base64Data =  convertDataContentToBase64String(fileData);
         setselectedFile(fileData);
-        const uploadurl = URL.createObjectURL(fileData);
-        setUploadData(base64Data);
+        if(fileData){
+            const reader = new FileReader();
+            reader.onloadend = ()=>{
+                setUploadData(reader.result as string);
+            }
+            reader.readAsDataURL(fileData)
+        }
     }
 
     const handleSubmit = async()=>{
-        // await resumeAi({imageData:UploadData});
-        const formData = new FormData();
-        formData.append('resume' , selectedFile);
-        try {
-            const res = await fetch("/api/resume" , {
-                method:"POST",
-                body:formData
-            });
-            if(res.ok){
-                console.log("Data get transmitted");
-                
-            }else{
-                console.log("Error:" , res.statusText);
-                
-            }
 
-        } catch (error) {
-            console.log(error);
+        await resumeHelpAi(UploadData);
+        
+        // await resumeAi({imageData:UploadData});
+        // const formData = new FormData();
+        // formData.append('resume' , ',sknd');
+        // try {
+        //     const res = await fetch("/api/resume" , {
+        //         method:"POST",
+        //         body:formData
+        //     });
+        //     if(res.ok){
+        //         console.log("Data get transmitted");
+                
+        //     }else{
+        //         console.log("Error:" , res.statusText);
+                
+        //     }
+
+        // } catch (error) {
+        //     console.log(error);
             
-        }
+        // }
     }
 
 

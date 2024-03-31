@@ -85,31 +85,37 @@ function fileToGenerativePart(path : any, mimeType : any) {
   }
   
 
-  export const resumeAi = async  ({imageData} : any)=>{
-    try {
-        console.log("everything is working fine");
-        console.log(imageData);
-        const genai =  new GoogleGenerativeAI(process.env.GEMENI_API_KEY!);
-        console.log("genai created");
-        
-        const model = genai.getGenerativeModel({model:'gemini-pro-vision'});
-        console.log("model created");
-        const prompt = "what is in this image";
-        console.log("prmpt created" , prompt);
-        console.log("imagedata creating");
-        const imageparts = fileToGenerativePart(imageData , 'image/jpg')
-        console.log("Imagedata created" , imageData);
-        const result = await model.generateContent([prompt , imageparts]);
 
-        const res = await result.response.text();
-        console.log("this is res" , res);
+
+  export const resumeHelpAi = async (ImageBase: any)=>{
+    
+    const genai = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
+    const prompt = "what is in this image?";
+    const parts = [
+        {
+            text:prompt
+        },
+        {
+            inlineData:{
+                mimeType:'image/jpg',
+                data:ImageBase
+            }
+        }
+    ];
+
+
+    const model = genai.getGenerativeModel({model:'gemini-pro-vision'});
+    const response = await model.generateContent({contents:[{role:'user' , parts}]});
+    console.log(response.response.text);
+    
+    
+    try {
+        
     } catch (error) {
         console.log(error);
         
     }
   }
-
-
 
 
 
