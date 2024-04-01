@@ -1,99 +1,71 @@
 "use client"
-import React, { useState } from 'react'
-import DeskNav from '../landingpage/navigations/DeskNav'
-import { Button } from '@/components/ui/button'
-import Image from 'next/image'
-import { convertDataContentToBase64String } from 'ai'
-import { resumeHelpAi } from '@/lib/actions/helpai.action'
+import React, { useState } from 'react';
+import DeskNav from '../landingpage/navigations/DeskNav';
+import { Button } from '@/components/ui/button';
+import Image from 'next/image';
+import { GoogleGenerativeAI } from '@google/generative-ai';
+import { imageDataChecking } from '@/lib/utils';
 
 const ResumeReviewercomp = () => {
+    const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+    const genAI = new GoogleGenerativeAI(API_KEY!);
 
-    const [selectedFile, setselectedFile] = useState<any>(null);
-    const [UploadData, setUploadData] = useState<any>(null);
-    
-    const handleImage = (event : any )=>{
-        const fileData = event.target.files[0];
-        setselectedFile(fileData);
-        if(fileData){
-            const reader = new FileReader();
-            reader.onloadend = ()=>{
-                setUploadData(reader.result as string);
-            }
-            reader.readAsDataURL(fileData)
+    const [file, setFile] = useState(null);
+
+    const handleFileChange = (event:any) => {
+        const file = event.target.files[0];
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setFile(reader.result as any);
+        };
+        if (file && allowedTypes.includes(file.type)) {
+            reader.readAsDataURL(file);
+        } else {
+            alert('Por favor selecciona un archivo de imagen válido');
+            event.target.value = null;
         }
-    }
+    };
 
-    const handleSubmit = async()=>{
-
-        // await resumeHelpAi(UploadData);
-
-        const BodyPara = {
-            resume:UploadData
+    const handleSubmit = async () => {
+        if (!file) {
+            alert('Por favor selecciona una imagen');
+            return;
         }
+        try {
+            const model = genAI.getGenerativeModel({ model: 'gemini-pro-vision' });
 
-        const nextBodyData = JSON.stringify(BodyPara);
-        const res = await fetch("/api/resume" , {
-            method:'POST',
-            body:nextBodyData
-        });
+            const checkll = imageDataChecking;
+            const result = await model.generateContent(["what is in this image?",  { inlineData: { data:checkll , mimeType: 'image/jpeg' } }]);
+            const response = await result.response;
+            const text = await response.text();
+            console.log(text);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
-        console.log(res.body);
-        
-
-        // await resumeAi({imageData:UploadData});
-        // const formData = new FormData();
-        // formData.append('resume' , ',sknd');
-        // try {
-        //     const res = await fetch("/api/resume" , {
-        //         method:"POST",
-        //         body:formData
-        //     });
-        //     if(res.ok){
-        //         console.log("Data get transmitted");
-                
-        //     }else{
-        //         console.log("Error:" , res.statusText);
-                
-        //     }
-
-        // } catch (error) {
-        //     console.log(error);
-            
-        // }
-    }
-
-
-  return (
-    <div className='min-h-screen w-full bg-black flex flex-col justify-between items-center' >
-        <div className='w-full' >
-        <DeskNav/>
-        </div>
-
-        {/* showing image when it is selected */}
-        {
-            selectedFile && (
+    return (
+        <div className='min-h-screen w-full bg-black flex flex-col justify-between items-center'>
+            <div className='w-full'>
+                <DeskNav />
+            </div>
+            <div className='pb-8'>
+                <h1 className='text-indigo-400 text-2xl text-center'>Resume Reviewer</h1>
+                <p className='text-white font-light text-center mt-1'>Upload your resume and provide your job description</p>
                 <div>
-                    <Image className='h-[400px] w-[400px] object-cover' src={URL.createObjectURL(selectedFile)} height={800} width={800} alt='selectedimage' />
+                    <input
+                        className="bg-white"
+                        type='file'
+                        aria-label='Selecciona una imagen'
+                        onChange={handleFileChange}
+                    />
+                    <input type="text" placeholder='enter job desc' />
+                    <Button onClick={handleSubmit} className='bg-indigo-600 ml-4'>Generate</Button>
                 </div>
-            )
-        }
-
-
-
-
-        <div className='pb-8' >
-            <h1 className='text-indigo-400 text-2xl text-center' >Resume Reviewer</h1>
-            <p className='text-white font-light text-center mt-1' >Upload your resume and provide your job description</p>
-
-            <div>
-                <input onChange={handleImage} type="file" />
-                <input type="text" placeholder='enter job desc' />
-                <Button onClick={handleSubmit} className='bg-indigo-600 ml-4' >Genreate</Button>
             </div>
         </div>
-      
-    </div>
-  )
-}
+    );
+};
 
-export default ResumeReviewercomp
+export default ResumeReviewercomp;
