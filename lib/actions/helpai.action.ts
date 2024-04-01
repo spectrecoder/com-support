@@ -74,57 +74,6 @@ const openai = new OpenAI({
   }
 
 
-  // Converts local file information to a GoogleGenerativeAI.Part object.
-function fileToGenerativePart(path : any, mimeType : any) {
-    return {
-      inlineData: {
-        data: Buffer.from(fs.readFileSync(path)).toString("base64"),
-        mimeType
-      },
-    };
-  }
-  
-
-
-
-  export const resumeHelpAi = async (ImageBase: any)=>{
-    try {
-    const genai = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
-    console.log("connection successfull");
-    
-    const prompt = "what is in this image?";
-    const parts = [
-        {
-            text:prompt
-        },
-        {
-            inlineData:{
-                mimeType:'image/jpg',
-                data:ImageBase
-            }
-        }
-    ];
-
-    console.log("Parts Value:" , parts );
-    
-
-
-    const model = genai.getGenerativeModel({model:'gemini-pro-vision'});
-
-    console.log("Model Created");
-    
-    const response = await model.generateContent({contents:[{role:'user' , parts}]});
-    console.log("Response Created");
-    
-    
-    
-    
-        
-    } catch (error) {
-        console.log(error);
-        
-    }
-  }
 
 
 

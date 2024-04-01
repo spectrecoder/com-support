@@ -4,39 +4,57 @@ import DeskNav from '../landingpage/navigations/DeskNav';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { imageDataChecking } from '@/lib/utils';
+import { ResumeReviewerProVision } from '@/lib/actions/pro-vision';
 
 const ResumeReviewercomp = () => {
     const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
     const genAI = new GoogleGenerativeAI(API_KEY!);
+    const [ImageforSubmission, setImageforSubmission] = useState<any>(null);
 
     const [file, setFile] = useState(null);
 
-    const handleFileChange = (event:any) => {
-        const file = event.target.files[0];
-        const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            setFile(reader.result as any);
-        };
-        if (file && allowedTypes.includes(file.type)) {
+
+    const imageChangehandler = (event:any)=>{
+        const file = event.target.files && event.target.files[0];
+        if(file){
+            const reader = new FileReader();
+            reader.onloadend = ()=>{
+                const base64ImageString = reader.result as string;
+               const splittedImage =  base64ImageString.split(",")[1];
+                setImageforSubmission(splittedImage);
+            };
             reader.readAsDataURL(file);
-        } else {
-            alert('Por favor selecciona un archivo de imagen válido');
-            event.target.value = null;
+        }else{
+            console.log("Please select image");
+            
         }
-    };
+        setImageforSubmission(file);
+            console.log("this is working" , file);
+            
+    }
+
+    const handleVisionSubmit =  async()=>{
+        if(!ImageforSubmission){
+            console.log("Please upload the image of your resume");
+        }
+
+       const data =  ResumeReviewerProVision({imageData:ImageforSubmission , prompt:"what is in this image"});
+    }
+
+    
 
     const handleSubmit = async () => {
-        if (!file) {
-            alert('Por favor selecciona una imagen');
+        if (!ImageforSubmission) {
+            alert('Please select an image');
             return;
         }
         try {
             const model = genAI.getGenerativeModel({ model: 'gemini-pro-vision' });
+           
 
-            const checkll = imageDataChecking;
-            const result = await model.generateContent(["what is in this image?",  { inlineData: { data:checkll , mimeType: 'image/jpeg' } }]);
+            
+            
+            const result = await model.generateContent(["what is in this image?",  { inlineData: { data:ImageforSubmission , mimeType: 'image/jpeg' } }]);
             const response = await result.response;
             const text = await response.text();
             console.log(text);
@@ -54,14 +72,10 @@ const ResumeReviewercomp = () => {
                 <h1 className='text-indigo-400 text-2xl text-center'>Resume Reviewer</h1>
                 <p className='text-white font-light text-center mt-1'>Upload your resume and provide your job description</p>
                 <div>
-                    <input
-                        className="bg-white"
-                        type='file'
-                        aria-label='Selecciona una imagen'
-                        onChange={handleFileChange}
-                    />
+                    {/*  */}
+                    <input type="file"  onChange={imageChangehandler} />
                     <input type="text" placeholder='enter job desc' />
-                    <Button onClick={handleSubmit} className='bg-indigo-600 ml-4'>Generate</Button>
+                    <Button onClick={handleVisionSubmit} className='bg-indigo-600 ml-4'>Generate</Button>
                 </div>
             </div>
         </div>

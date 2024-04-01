@@ -13,4 +13,9 @@ export type RoadmapProps = {
 }
 
 
-export const CusMes  = "hey i am void"
+
+
+export type ResumeReviwerProps = {
+    imageData:any,
+    prompt:any
+}
