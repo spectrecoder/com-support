@@ -16,6 +16,7 @@ export const ResumeReviewerProVision =  async ({imageData , prompt}:ResumeReviwe
             const text = await response.text();
             console.log(text);
         
+            return text;
         
         
     } catch (error) {
