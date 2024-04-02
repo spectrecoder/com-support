@@ -15,6 +15,13 @@
 }
 }
 
+
+#response a{
+  color: #5D87FF  ;
+  text-decoration-line: underline;
+  font-weight:bold;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

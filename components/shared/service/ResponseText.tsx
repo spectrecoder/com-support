@@ -1,6 +1,6 @@
 import React from 'react'
 import Markdown from 'markdown-it'
-
+import DOMPurify from 'dompurify';
 
 type ResponsetextProps = {
     data:string
@@ -8,12 +8,13 @@ type ResponsetextProps = {
 
 const md = Markdown();
 
-const ResponseText = ({data} : ResponsetextProps) => {
-    console.log("This is data" , data);
-    
+
+const ResponseText = ({data} : ResponsetextProps) => {    
         const htmlContent = md.render(data);
+        const sanitized = DOMPurify.sanitize(htmlContent)
+
   return (
-    <div dangerouslySetInnerHTML={{__html:htmlContent}} >
+    <div id='response' dangerouslySetInnerHTML={{__html:htmlContent}} >
       
     </div>
   )

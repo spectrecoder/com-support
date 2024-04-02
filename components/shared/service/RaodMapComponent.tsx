@@ -13,6 +13,7 @@ import {
     SelectValue,
   } from "@/components/ui/select";
 import { genreateLinkedincaption, GenreateRoadMapsWithhelpai } from '@/lib/actions/helpai.action';
+import ResponseText from './ResponseText';
   
 
 const RaodMapComponent = () => {
@@ -92,8 +93,8 @@ const RaodMapComponent = () => {
 
             {/* response div */}
 
-            <div>
-              <LinkedinText type='ROADMAP' response={Response} />
+            <div className='text-white ml-11 mt-4 text-sm whitespace-pre-wrap' >
+              <ResponseText  data={Response} />
            
             </div>
           </div>

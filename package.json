@@ -16,6 +16,7 @@
     "ai": "^3.0.16",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "dompurify": "^3.0.11",
     "formidable": "^3.5.1",
     "framer-motion": "^11.0.22",
     "lucide-react": "^0.363.0",
@@ -30,6 +31,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@types/dompurify": "^3.0.5",
     "@types/formidable": "^3.4.5",
     "@types/markdown-it": "^13.0.7",
     "@types/node": "^20",
