@@ -10,11 +10,8 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Bot, Sparkles, User2 } from "lucide-react";
-import { genreateLinkedincaption } from "@/lib/actions/helpai.action";
 import Image from "next/image";
-import LinkedinText from "./LinkedinText";
 import { useChat } from "ai/react";
-import Markdown from "react-markdown";
 import ResponseText from "./ResponseText";
 
 const LinkedinCaptionGenreator = () => {
@@ -41,7 +38,7 @@ const LinkedinCaptionGenreator = () => {
       {/* login for showing logo when response and showlogo both are false whenever wny of them turned true then a loading state will appear  */}
         {
           Response == null && showLogo && (
-            <div className="h-[500px] md:h-[400px] w-full  flex justify-center items-center" >
+          <div className="h-[500px] md:h-[400px] w-full  flex justify-center items-center" >
 
               <Image className="h-16 w-16 rounded-full" src={`/tab.svg`} height={900} width={900} alt="logoimage" />
 
@@ -49,7 +46,7 @@ const LinkedinCaptionGenreator = () => {
           )
         }
 
-        
+
         {
           messages.length < 1 && !showLogo  && (
             <div className="h-[500px] md:h-[400px] w-full  flex justify-center items-center" >

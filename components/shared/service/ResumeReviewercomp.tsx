@@ -1,9 +1,7 @@
 "use client";
 import React, { useRef, useState } from "react";
 import DeskNav from "../landingpage/navigations/DeskNav";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { GoogleGenerativeAI } from "@google/generative-ai";
 import { ResumeReviewerProVision } from "@/lib/actions/pro-vision";
 import { ImageIcon, Send, X } from "lucide-react";
 import ResponseText from "./ResponseText";
