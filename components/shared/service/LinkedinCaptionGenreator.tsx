@@ -15,6 +15,7 @@ import Image from "next/image";
 import LinkedinText from "./LinkedinText";
 import { useChat } from "ai/react";
 import Markdown from "react-markdown";
+import ResponseText from "./ResponseText";
 
 const LinkedinCaptionGenreator = () => {
   const [Prompt, setPrompt] = useState<string>("");
@@ -29,25 +30,6 @@ const LinkedinCaptionGenreator = () => {
     api:'/api/genai'
   });
 
-  // calling the action
-
-  const handleSubmitT = async () => {
-    try {
-      setshowLogo(false);
-      setLoading(true);
-      const res = await genreateLinkedincaption({
-        keyword: Keywords,
-        prompt: Prompt,
-        tone: Tone,
-      });
-      res.split("\n\n");
-      setResponse(res);
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      throw Error("Some error occured");
-    }
-  };
 
   return (
     <div className="min-h-screen w-full bg-black flex flex-col justify-between items-center">
@@ -66,8 +48,10 @@ const LinkedinCaptionGenreator = () => {
             </div>
           )
         }
+
+        
         {
-          Loading  && (
+          messages.length < 1 && !showLogo  && (
             <div className="h-[500px] md:h-[400px] w-full  flex justify-center items-center" >
 
               <div className="h-4 w-4 bg-white rounded-full animate-ping" >
@@ -77,6 +61,8 @@ const LinkedinCaptionGenreator = () => {
             </div>
           )
         }
+
+        
 
 
 
@@ -94,7 +80,7 @@ const LinkedinCaptionGenreator = () => {
             {messages.map((m, index) => {
           return (
             <div
-            className={`p-4 shadow-md rounded-md ml-10 relative  ${
+            className={`p-4 shadow-md rounded-md md:ml-10 relative  ${
               m.role === "user" ? "bg-stone-300 hidden" : ""
             }`}
           >
@@ -104,7 +90,11 @@ const LinkedinCaptionGenreator = () => {
               </div>
               <p className="text-white" >help.ai</p>
             </div>
-           <p className="text-white font-light leading-relaxed tracking-wide mt-2 ml-11" >{m.content}</p>
+
+            <div className="text-white mt-6 ml-6 font-sans" >
+            <ResponseText data={m.content}  />
+            </div>
+           {/* <p className="text-white font-light leading-relaxed tracking-wide mt-2 ml-11" >{m.content}</p> */}
             {m.role === "user" ? (
               <User2 className="absolute top-2 -left-10 border rounded-full p-1 shadow-lg" />
             ) : (
@@ -115,7 +105,6 @@ const LinkedinCaptionGenreator = () => {
           </div>
           );
         })}
-              {/* <LinkedinText type="LINKEDIN"  response={Response} /> */}
            
             </div>
           </div>
@@ -126,7 +115,9 @@ const LinkedinCaptionGenreator = () => {
                 event.preventDefault();
                 handleSubmit(event , {
                    data:{
-                    prompt:input
+                    prompt:input,
+                    keyword:Keywords,
+                    tone:Tone
                    }
                 })
               }} >
