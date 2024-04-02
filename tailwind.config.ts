@@ -68,8 +68,8 @@ const config = {
       },
 
       backgroundImage:{
-        'heroBgImage': "url(/bg.svg)",
-        'heroImage': "url(/hero.svg)",
+        'heroBgImage': "url(/heromain.svg)",
+        'heroImage': "url(/heromain.svg)",
       },
       keyframes: {
         spotlight: {

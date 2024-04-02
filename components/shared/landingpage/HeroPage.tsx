@@ -24,7 +24,7 @@ const HeroPage = () => {
 
       </div>
      </div>
-      <p className='text-white font-light text-[12px]' >Access Before April</p>
+      <p className='text-white font-light text-[12px]' >More Tools Coming Soon</p>
       <ArrowRight className='text-white ' strokeWidth={1} size={15} />
     </div>
     <h1 className='bg-gradient-to-r mx-4 from-white via-zinc-300 to-zinc-500 text-transparent bg-clip-text md:text-6xl md:mx-[20rem] text-4xl font-bold mt-8 text-center tracking-normal leading-tight' >Seamlessly shape your ideas and craft in reality</h1>
@@ -46,11 +46,17 @@ const HeroPage = () => {
       </div></Link>
 
     <div className='' >
-        <Image className='h-[600px] w-auto '  src={`/hero.svg`} height={1500} width={1500}alt='heroimage' />
+        <Image className='h-[600px] w-auto rounded-xl mt-16 hidden md:block'  src={`/data.svg`} height={1500} width={1500}alt='heroimage' />
+        <Image className='h-[600px] w-auto rounded-2xl mt-2 px-4 md:hidden'  src={`/mobdata.svg`} height={1500} width={1500}alt='heroimage' />
     </div>
    </div>
 
    {/* other sections */}
+
+   <div className='h-16 w-full flex items-center justify-center' >
+    <p className='text-blue-300' >Made by Nikhil</p>
+
+   </div>
 
 
 

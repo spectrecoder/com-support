@@ -1,4 +1,4 @@
-import { Sparkle, Sparkles } from 'lucide-react'
+import { FileScan, Linkedin, MailCheck, Sparkle, Sparkles, Sun } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
@@ -8,22 +8,26 @@ const ServicesComponent = () => {
     {
       name:"Linkedin caption genreator",
       desc:"Genreate your linkedin caption whenever you want with the help of help.ai and save your valuable time",
-      link:"/services/linkedin"
+      link:"/services/linkedin",
+      type:"Linkedin"
     },
     {
       name:"Roadmap Genreator",
       desc:"Genreate your roadmap for any technology whenever you want with the help of help.ai and save your valuable time",
-      link:"/services/roadmap"
+      link:"/services/roadmap",
+      type:"Roadmap"
     },
     {
       name:"Resume Reviewer",
       desc:"Genreate your roadmap for any technology whenever you want with the help of help.ai and save your valuable time",
-      link:"/services/resume"
+      link:"/services/resume",
+      type:"Resume"
     },
     {
       name:"Email Assistant",
       desc:"Genreate your roadmap for any technology whenever you want with the help of help.ai and save your valuable time",
-      link:"/services/email"
+      link:"/services/email",
+      type:"Email"
     },
   ]
   return (
@@ -43,15 +47,62 @@ const ServicesComponent = () => {
             <div className='h-[350px] md:w-[400px] w-[380px] cursor-pointer  bg-gradient-to-b from-zinc-900 to-zinc-950 rounded-xl' >
                 <div className='h-2/3 w-full pt-6' >
                   <div className='h-12 w-12 rounded-full bg-opacity-35 bg-zinc-700 ml-6 flex justify-center items-center border-[1px] border-zinc-700' >
-                    <Sparkles className='text-white' strokeWidth={1.5} />
+                    {
+                      curr.type == "Resume" && (
+                        <FileScan className='text-orange-300' strokeWidth={1.5} />
+                      )
+                    }
+                    {
+                      curr.type == "Linkedin" && (
+                        <Linkedin className='text-blue-300' strokeWidth={1.5} />
+                      )
+                    }
+                    {
+                      curr.type == "Roadmap" && (
+                        <Sun className='text-yellow-300' strokeWidth={1.5} />
+                      )
+                    }
+                    {
+                      curr.type == "Email" && (
+                        <MailCheck className='text-pink-300' strokeWidth={1.5} />
+                      )
+                    }
 
                   </div>
                 </div>
     
-                <div className='px-4 ' >
-                    <h1 className='text-indigo-300 text-lg' >{curr.name}</h1>
-                    <p className='text-[12px] font-normal mt-2 text-zinc-500' >{curr.desc}</p>
-                </div>
+               {
+                curr.type == "Resume" && (
+                  <div className='px-4 ' >
+                  <h1 className='text-orange-300 text-lg' >{curr.name}</h1>
+                  <p className='text-[12px] font-normal mt-2 text-zinc-500' >{curr.desc}</p>
+              </div>
+                )
+               }
+               {
+                curr.type == "Roadmap" && (
+                  <div className='px-4 ' >
+                  <h1 className='text-yellow-300 text-lg' >{curr.name}</h1>
+                  <p className='text-[12px] font-normal mt-2 text-zinc-500' >{curr.desc}</p>
+              </div>
+                )
+               }
+               {
+                curr.type == "Email" && (
+                  <div className='px-4 ' >
+                  <h1 className='text-pink-300 text-lg' >{curr.name}</h1>
+                  <p className='text-[12px] font-normal mt-2 text-zinc-500' >{curr.desc}</p>
+              </div>
+                )
+               }
+               {
+                curr.type == "Linkedin" && (
+                  <div className='px-4 ' >
+                  <h1 className='text-blue-300 text-lg' >{curr.name}</h1>
+                  <p className='text-[12px] font-normal mt-2 text-zinc-500' >{curr.desc}</p>
+              </div>
+                )
+               }
     
             </div></Link>
     
