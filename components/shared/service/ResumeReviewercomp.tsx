@@ -9,14 +9,14 @@ import { ImageIcon, Send, X } from "lucide-react";
 import ResponseText from "./ResponseText";
 
 const ResumeReviewercomp = () => {
+  
   const ImageInputHanlder = useRef<any>(null);
 
   const imageOpener = () => {
     ImageInputHanlder.current.click();
   };
 
-  const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
-  const genAI = new GoogleGenerativeAI(API_KEY!);
+
   const [ImageforSubmission, setImageforSubmission] = useState<any>(null);
 
   const [ImageForShow, setImageForShow] = useState<any>(null);
@@ -63,14 +63,15 @@ const ResumeReviewercomp = () => {
   };
 
   return (
-    <div className="h-screen w-full bg-black flex flex-col justify-between items-center">
+  <div className="h-screen w-full bg-black" >
+      <div className="h-full  w-full bg-black flex flex-col justify-between items-center">
       <div className="w-full">
         <DeskNav />
       </div>
 
       {/* Response text section */}
 
-      <div className="h-[700px] overflow-x-scroll no-scrollbar w-full  px-96">
+      <div className="h-[700px] overflow-x-scroll no-scrollbar w-full md:px-96 px-4">
 
         {
             ShowLogo && !ShowLoading && (
@@ -88,7 +89,7 @@ const ResumeReviewercomp = () => {
         }
        {
         Response && (
-            <div className="flex gap-4 items-center ">
+            <div className="flex gap-2 items-center mt-8 ml-4">
             <Image
               className="h-6 w-6"
               src={`/tab.svg`}
@@ -100,7 +101,7 @@ const ResumeReviewercomp = () => {
           </div>
         )
        }
-        <div className="whitespace-pre-wrap mt-2 ml-10 font-sans">
+        <div className="whitespace-pre-wrap mt-2 ml-6 font-sans">
           {Response && (
             <p className="text-white whitespace-pre-wrap tracking-wide leading-relaxed">
               {" "}
@@ -170,6 +171,7 @@ const ResumeReviewercomp = () => {
         </div>
       </div>
     </div>
+  </div>
   );
 };
 
