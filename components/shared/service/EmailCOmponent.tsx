@@ -55,6 +55,7 @@ const EmailCOmponent = () => {
     const data = await ResumeReviewerProVision({
       imageData: ImageforSubmission,
       prompt: Prompt,
+      type:'EMAIL'
     });
     if (data) {
         setShowLoading(false);
@@ -70,7 +71,7 @@ const EmailCOmponent = () => {
 
       {/* Response text section */}
 
-      <div className="h-[700px] overflow-x-scroll no-scrollbar w-full  px-96">
+      <div className="h-[700px] overflow-x-scroll no-scrollbar w-full  md:px-96 px-4">
 
         {
             ShowLogo && !ShowLoading && (
@@ -88,7 +89,7 @@ const EmailCOmponent = () => {
         }
        {
         Response && (
-            <div className="flex gap-4 items-center ">
+            <div className="flex gap-2 items-center ml-6 mt-6">
             <Image
               className="h-6 w-6"
               src={`/tab.svg`}
@@ -100,7 +101,7 @@ const EmailCOmponent = () => {
           </div>
         )
        }
-        <div className="whitespace-pre-wrap mt-2 ml-10 font-sans">
+        <div className="whitespace-pre-wrap mt-2 ml-6 font-sans">
           {Response && (
             <p className="text-white whitespace-pre-wrap tracking-wide leading-relaxed">
               {" "}
@@ -118,8 +119,8 @@ const EmailCOmponent = () => {
                 setPrompt(e.target.value);
               }}
               type="text"
-              placeholder="Enter Job Description..."
-              className="bg-transparent placeholder:text-zinc-300 font-sans outline-none text-white w-[600px]"
+              placeholder="I want to apply for [company name] as a [position]"
+              className="bg-transparent placeholder:text-zinc-300 placeholder:text-xs placeholder:md:text-base font-sans outline-none text-white w-[600px]"
             />
 
             <input

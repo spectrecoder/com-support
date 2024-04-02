@@ -18,4 +18,5 @@ export type RoadmapProps = {
 export type ResumeReviwerProps = {
     imageData:any,
     prompt:any
+    type?:"EMAIL"
 }
