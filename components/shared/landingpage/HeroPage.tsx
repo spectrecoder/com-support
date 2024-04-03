@@ -27,7 +27,7 @@ const HeroPage = () => {
       <p className='text-white font-light text-[12px]' >More Tools Coming Soon</p>
       <ArrowRight className='text-white ' strokeWidth={1} size={15} />
     </div>
-    <h1 className='bg-gradient-to-r mx-4 from-white via-zinc-300 to-zinc-500 text-transparent bg-clip-text md:text-6xl md:mx-[20rem] text-4xl font-bold mt-8 text-center tracking-normal leading-tight' >Seamlessly shape your ideas and craft in reality</h1>
+    <h1 className='bg-gradient-to-r mx-4 from-white via-zinc-400 to-zinc-700 text-transparent bg-clip-text md:text-6xl md:mx-[20rem] text-4xl font-bold mt-8 text-center tracking-normal leading-tight animate-pulse' >Seamlessly shape your ideas and craft in reality</h1>
    
     
   
@@ -53,8 +53,8 @@ const HeroPage = () => {
 
    {/* other sections */}
 
-   <div className='h-16 w-full flex items-center justify-center' >
-    <p className='text-blue-300' >Made by Nikhil</p>
+   <div className='h-16 w-full flex items-center justify-center md:mt-16' >
+    <Link href="https://github.com/voiiddxx" ><p className='text-zinc-700 font-light text-sm' >Made by Nikhil Kumar</p></Link>
 
    </div>
 

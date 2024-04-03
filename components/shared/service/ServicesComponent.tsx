@@ -1,4 +1,4 @@
-import { FileScan, Linkedin, MailCheck, Sparkle, Sparkles, Sun } from 'lucide-react'
+import { FileScan, Linkedin, MailCheck, MousePointerClickIcon, Sparkle, Sparkles, Sun } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
@@ -29,6 +29,18 @@ const ServicesComponent = () => {
       link:"/services/email",
       type:"Email"
     },
+    {
+      name:"Logo genreator",
+      desc:"Genreate your logo with a single prompt and use in your products and grow your products",
+      link:"/",
+      type:"Logo"
+    },
+    {
+      name:"Video Analyzer",
+      desc:"Now don't waste your time to watch complete video , just paste the link and get the key points of video by help.ai",
+      link:"/",
+      type:"Video"
+    },
   ]
   return (
     <div className=' min-h-screen border-t md:mx-20 mx-4 border-zinc-800 ' >
@@ -54,7 +66,7 @@ const ServicesComponent = () => {
                     }
                     {
                       curr.type == "Linkedin" && (
-                        <Linkedin className='text-blue-300' strokeWidth={1.5} />
+                        <Linkedin className='text-indigo-300' strokeWidth={1.5} />
                       )
                     }
                     {
@@ -65,6 +77,16 @@ const ServicesComponent = () => {
                     {
                       curr.type == "Email" && (
                         <MailCheck className='text-pink-300' strokeWidth={1.5} />
+                      )
+                    }
+                    {
+                      curr.type == "Logo" && (
+                        <MousePointerClickIcon className='text-teal-300' strokeWidth={1.5} />
+                      )
+                    }
+                    {
+                      curr.type == "Video" && (
+                        <Sparkle className='text-violet-300' strokeWidth={1.5} />
                       )
                     }
 
@@ -103,12 +125,33 @@ const ServicesComponent = () => {
               </div>
                 )
                }
+               {
+                curr.type == "Logo" && (
+                  <div className='px-4 ' >
+                  <h1 className='text-teal-300 text-lg' >{curr.name} <span className='text-red-400 font-light text-[12px] bg-zinc-700 bg-opacity-15 px-2 py-1 rounded-full' >(coming soon)</span> </h1>
+                  <p className='text-[12px] font-normal mt-2 text-zinc-500' >{curr.desc}</p>
+              </div>
+                )
+               }
+               {
+                curr.type == "Video" && (
+                  <div className='px-4 ' >
+                  <h1 className='text-violet-300 text-lg' >{curr.name} <span className='text-red-400 font-light text-[12px] bg-zinc-700 bg-opacity-15 px-2 py-1 rounded-full' >(coming soon)</span> </h1>
+                  <p className='text-[12px] font-normal mt-2 text-zinc-500' >{curr.desc}</p>
+              </div>
+                )
+               }
     
             </div></Link>
     
           </div>
           })
         }
+
+<div className='h-16 w-full flex items-center justify-center md:mt-16' >
+    <Link href="https://github.com/voiiddxx" ><p className='text-zinc-700 font-light text-sm' >Made by Nikhil Kumar</p></Link>
+
+   </div>
       </div>
     </div>
   )
