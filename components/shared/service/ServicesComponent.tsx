@@ -19,13 +19,13 @@ const ServicesComponent = () => {
     },
     {
       name:"Resume Reviewer",
-      desc:"Genreate your roadmap for any technology whenever you want with the help of help.ai and save your valuable time",
+      desc:"Don't apply to any job without reviewing your resume , now review your resume based on the jaob desc with the help.ai",
       link:"/services/resume",
       type:"Resume"
     },
     {
       name:"Email Assistant",
-      desc:"Genreate your roadmap for any technology whenever you want with the help of help.ai and save your valuable time",
+      desc:"Wondering about how to write a good email? don't worry help.ai will help you to write good and prominet email.",
       link:"/services/email",
       type:"Email"
     },
