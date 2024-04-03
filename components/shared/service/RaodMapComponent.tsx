@@ -36,7 +36,8 @@ const RaodMapComponent = () => {
         topic: Prompt,
         days: Tone,
       });
-      res.split("\n\n");
+      console.log(res);
+      
       setResponse(res);
       setLoading(false);
     } catch (error) {

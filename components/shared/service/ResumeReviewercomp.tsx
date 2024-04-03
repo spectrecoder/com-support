@@ -55,6 +55,8 @@ const ResumeReviewercomp = () => {
       prompt: Prompt,
     });
     if (data) {
+      console.log(data);
+      
         setShowLoading(false);
       setResponse(data);
     }

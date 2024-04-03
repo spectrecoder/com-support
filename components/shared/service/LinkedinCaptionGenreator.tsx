@@ -48,7 +48,7 @@ const LinkedinCaptionGenreator = () => {
 
 
         {
-          messages.length < 1 && !showLogo  && (
+          messages.length <= 0 && !showLogo  && (
             <div className="h-[500px] md:h-[400px] w-full  flex justify-center items-center" >
 
               <div className="h-4 w-4 bg-white rounded-full animate-ping" >
