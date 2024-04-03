@@ -113,28 +113,14 @@ const RaodMapComponent = () => {
 
         {/* select componenet */}
         <div className="md:w-[800px] w-full gap-4 flex justify-between items-center mt-4">
-          <Select
-            onValueChange={(value) => {
-              setTone(value);
-            }}
-          >
-            <SelectTrigger className="md:w-[380px] bg-opacity-30 w-full bg-zinc-800 border-zinc-900 text-zinc-400">
-              <SelectValue placeholder="Select Duration" />
-            </SelectTrigger>
-            <SelectContent className="bg-zinc-950 text-white border-zinc-800 hover:bg-zinc-900">
-              <SelectItem value="15">15-Days</SelectItem>
-              <SelectItem value="10">30-Days</SelectItem>
-              <SelectItem value="60">2-Months</SelectItem>
-              <SelectItem value="90">3-Months</SelectItem>
-            </SelectContent>
-          </Select>
+          
 
           <input
             onChange={(e) => {
-              setKeywords(e.target.value);
+              setTone(e.target.value);
             }}
-            className="h-10 md:w-[400px] w-full bg-opacity-30 rounded-md bg-zinc-800 border-[1px] border-zinc-900 placeholder:font-light placeholder:text-zinc-400 placeholder:text-sm  text-white px-2"
-            placeholder="Additionols..."
+            className="h-10 md:w-[800px] w-full bg-opacity-30 rounded-md bg-zinc-800 border-[1px] border-zinc-900 placeholder:font-light placeholder:text-zinc-400 placeholder:text-sm  text-white px-2"
+            placeholder="Duration"
           />
         </div>
         <Button
