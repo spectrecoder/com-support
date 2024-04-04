@@ -9,7 +9,8 @@ type ResponsetextProps = {
 const md = Markdown();
 
 
-const ResponseText = ({data} : ResponsetextProps) => {    
+const ResponseText = ({data} : ResponsetextProps) => {  
+  // rendering the content using mardwon  
         const htmlContent = md.render(data);
         const sanitized = DOMPurify.sanitize(htmlContent)
 
