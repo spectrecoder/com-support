@@ -8,6 +8,7 @@ type LinkedintextProps = {
 
 const LinkedinText = ({response , type} : LinkedintextProps) => {
   let resText : any = [];
+
   if(type == "LINKEDIN"){
       resText = response.split(/\d+\./).filter(item => item.trim() !== '');
   }
@@ -31,6 +32,7 @@ const LinkedinText = ({response , type} : LinkedintextProps) => {
         resText.map((curr:any , index:any)=>{
            return <div key={index}>
               <Markdown className="text-white font-light ml-11 mt-4" >{curr.trim()}</Markdown>
+              {/* Using the responsetext componet instead of using this component -- reason -- for utilizing one component for rendering the all responses */}
             <br />
             
            </div>
