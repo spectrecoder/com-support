@@ -12,7 +12,7 @@ import {
     SelectTrigger,
     SelectValue,
   } from "@/components/ui/select";
-import { genreateLinkedincaption, GenreateRoadMapsWithhelpai } from '@/lib/actions/helpai.action';
+import { genreateLinkedincaption, GenreateRoadMapsWithhelpai } from '@/lib/actions/communeai.action';
 import ResponseText from './ResponseText';
   
 
@@ -57,8 +57,8 @@ const RaodMapComponent = () => {
         {
           Response == null && showLogo && (
             <div className="h-[500px] md:h-[400px] w-full  flex justify-center items-center" >
+              <div className=" w-2/5 h-96  bg-[url('/roadmap.jpg')] bg-cover flex align-center justify-center mt-40 rounded"></div>
 
-              <Image className="h-16 w-16 rounded-full" src={`/tab.svg`} height={900} width={900} alt="logoimage" />
 
             </div>
           )
@@ -71,7 +71,7 @@ const RaodMapComponent = () => {
 
               </div>
 
-            </div>
+            </div> 
           )
         }
 
@@ -79,16 +79,16 @@ const RaodMapComponent = () => {
           <div className="md:h-[400px] mt-8 md:mt-2 h-[500px] mx-8 md:mx-96 overflow-x-scroll no-scrollbar">
             {/* aiheading */}
             <div className="flex items-center gap-3">
-              <div className="h-8 w-8 bg-zinc-800 rounded-full flex justify-center items-center">
+              <div className="h-8 w-8 bg-zinc-800 flex justify-center items-center rounded">
                 <Image
-                  className="h-6 w-auto "
-                  src={`/tab.svg`}
+                  className="h-6 w-auto"
+                  src={`/commune.gif`}
                   height={900}
                   width={900}
                   alt="logoimage"
                 />
               </div>
-              <p className="text-xl text-white">Help.ai</p>
+              <p className="text-xl text-white">Commune AI Support</p>
             </div>
            
 
@@ -125,10 +125,10 @@ const RaodMapComponent = () => {
         </div>
         <Button
           onClick={handleSubmit}
-          className="mt-4 md:w-[800px] w-full bg-white text-black rounded-full"
+          className="mt-4 md:w-[800px] w-full bg-white text-black rounded-full hover:text-white"
         >
           <Sparkles size={17} strokeWidth={1.5} />
-          Genreate With Help.ai
+          Genreate Commune AI
         </Button>
       </div>
     </div>

@@ -7,43 +7,31 @@ const ServicesComponent = () => {
   const serv = [
     {
       name:"Linkedin caption genreator",
-      desc:"Genreate your linkedin caption whenever you want with the help of help.ai and save your valuable time",
+      desc:"Genreate your linkedin caption whenever you want with the help of Commune AI Support and save your valuable time",
       link:"/services/linkedin",
       type:"Linkedin"
     },
     {
       name:"Roadmap Genreator",
-      desc:"Genreate your roadmap for any technology whenever you want with the help of help.ai and save your valuable time",
+      desc:"Genreate your roadmap for any technology whenever you want with the help of Commune AI Support and save your valuable time",
       link:"/services/roadmap",
       type:"Roadmap"
     },
     {
       name:"Resume Reviewer",
-      desc:"Don't apply to any job without reviewing your resume , now review your resume based on the jaob desc with the help.ai",
+      desc:"Don't apply to any job without reviewing your resume , now review your resume based on the jaob desc with the Commune AI Support",
       link:"/services/resume",
       type:"Resume"
     },
     {
       name:"Email Assistant",
-      desc:"Wondering about how to write a good email? don't worry help.ai will help you to write good and prominet email.",
+      desc:"Wondering about how to write a good email? don't worry Commune AI Support will help you to write good and prominet email.",
       link:"/services/email",
       type:"Email"
     },
-    {
-      name:"Logo genreator",
-      desc:"Genreate your logo with a single prompt and use in your products and grow your products",
-      link:"/",
-      type:"Logo"
-    },
-    {
-      name:"Video Analyzer",
-      desc:"Now don't waste your time to watch complete video , just paste the link and get the key points of video by help.ai",
-      link:"/",
-      type:"Video"
-    },
   ]
   return (
-    <div className=' min-h-screen border-t md:mx-20 mx-4 border-zinc-800 ' >
+    <div className="min-h-screen border-t md:mx-20 mx-4 border-zinc-800 bg-[url('/bg.svg')]" >
       <h1 className='bg-gradient-to-r  from-blue-300 via-red-500 to-red-700 text-transparent bg-clip-text text-2xl mt-4 ' >
         Select any of the services
       </h1>
@@ -79,17 +67,6 @@ const ServicesComponent = () => {
                         <MailCheck className='text-pink-300' strokeWidth={1.5} />
                       )
                     }
-                    {
-                      curr.type == "Logo" && (
-                        <MousePointerClickIcon className='text-teal-300' strokeWidth={1.5} />
-                      )
-                    }
-                    {
-                      curr.type == "Video" && (
-                        <Sparkle className='text-violet-300' strokeWidth={1.5} />
-                      )
-                    }
-
                   </div>
                 </div>
     
@@ -124,24 +101,7 @@ const ServicesComponent = () => {
                   <p className='text-[12px] font-normal mt-2 text-zinc-500' >{curr.desc}</p>
               </div>
                 )
-               }
-               {
-                curr.type == "Logo" && (
-                  <div className='px-4 ' >
-                  <h1 className='text-teal-300 text-lg' >{curr.name} <span className='text-red-400 font-light text-[12px] bg-zinc-700 bg-opacity-15 px-2 py-1 rounded-full' >(coming soon)</span> </h1>
-                  <p className='text-[12px] font-normal mt-2 text-zinc-500' >{curr.desc}</p>
-              </div>
-                )
-               }
-               {
-                curr.type == "Video" && (
-                  <div className='px-4 ' >
-                  <h1 className='text-violet-300 text-lg' >{curr.name} <span className='text-red-400 font-light text-[12px] bg-zinc-700 bg-opacity-15 px-2 py-1 rounded-full' >(coming soon)</span> </h1>
-                  <p className='text-[12px] font-normal mt-2 text-zinc-500' >{curr.desc}</p>
-              </div>
-                )
-               }
-    
+               }    
             </div></Link>
     
           </div>
@@ -149,7 +109,7 @@ const ServicesComponent = () => {
         }
 
 <div className='h-16 w-full flex items-center justify-center md:mt-16' >
-    <Link href="https://github.com/voiiddxx" ><p className='text-zinc-700 font-light text-sm' >Made by Nikhil Kumar</p></Link>
+    <Link href="https://communeai.org/" target='_blank'><p className='text-zinc-700 font-light text-sm' >Made by Commune</p></Link>
 
    </div>
       </div>

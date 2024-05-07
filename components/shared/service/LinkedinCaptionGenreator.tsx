@@ -32,15 +32,11 @@ const LinkedinCaptionGenreator = () => {
     <div className="min-h-screen w-full bg-black flex flex-col justify-between items-center">
       <div className="w-full">
         <DeskNav />
-
-
-
-      {/* login for showing logo when response and showlogo both are false whenever wny of them turned true then a loading state will appear  */}
         {
           Response == null && showLogo && (
           <div className="h-[500px] md:h-[400px] w-full  flex justify-center items-center" >
-
-              <Image className="h-16 w-16 rounded-full" src={`/tab.svg`} height={900} width={900} alt="logoimage" />
+              <div className=" w-2/5 h-96  bg-[url('/linkedin.jpg')] bg-cover flex align-center justify-center mt-40 rounded"></div>
+              {/* <Image className="h-16 w-16 rounded-full" src={`/commune.gif`} height={900} width={900} alt="logoimage" /> */}
 
             </div>
           )
@@ -80,10 +76,11 @@ const LinkedinCaptionGenreator = () => {
             className={`p-4 shadow-md rounded-md md:ml-10 relative  ${
               m.role === "user" ? "bg-stone-300 hidden" : ""
             }`}
+            key={index}
           >
             <div className="flex items-center gap-2" >
               <div className="h-10 w-10 bg-zinc-800 rounded-full flex justify-center items-center" >
-                <Image className="h-8 w-8 object-contain" src={`/tab.svg`} height={1000} width={1000} alt="logo" />
+                <Image className="h-8 w-8 object-contain" src={`/commune.gif`} height={1000} width={1000} alt="logo" />
               </div>
               <p className="text-white" >help.ai</p>
             </div>
@@ -152,10 +149,10 @@ const LinkedinCaptionGenreator = () => {
         </div>
         <Button
           type="submit"
-          className="mt-4 md:w-[800px] w-full bg-white text-black rounded-full"
+          className="mt-4 md:w-[800px] w-full bg-white text-black rounded-full hover:text-white"
         >
           <Sparkles size={17} strokeWidth={1.5} />
-          Genreate With Help.ai
+          Genreate With Commune AI
         </Button>
       </div>
       </form>

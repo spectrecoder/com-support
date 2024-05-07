@@ -8,7 +8,7 @@ const poppins = Poppins({ subsets: ["latin"],
 weight:['100',"200","300" , "500" , "600" , "700" , "800" , "900"] });
 
 export const metadata: Metadata = {
-  title: "HelpAi | Your Learning AI",
+  title: "Commune AI Support",
   description: "Platform where you can access multiple ai helpers",
 };
 

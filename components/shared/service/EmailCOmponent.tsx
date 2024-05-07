@@ -76,7 +76,7 @@ const EmailCOmponent = () => {
         {
             ShowLogo && !ShowLoading && (
                 <div className="h-full w-full flex justify-center items-center" >
-                    <Image className="h-16 w-16" src={`/tab.svg`} height={900}width={900} alt="logo" />
+                    {/* <Image className="h-16 w-16" src={`/commune.gif`} height={900}width={900} alt="logo" /> */}
                 </div>
             )
         }
@@ -92,7 +92,7 @@ const EmailCOmponent = () => {
             <div className="flex gap-2 items-center ml-6 mt-6">
             <Image
               className="h-6 w-6"
-              src={`/tab.svg`}
+              src={`/commune.gif`}
               height={900}
               width={900}
               alt="tab"

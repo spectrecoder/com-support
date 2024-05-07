@@ -12,10 +12,7 @@ export async function POST(req:Request , res:Response) {
 
     console.log(prompt , tone , keyword);
     
-    
-
-    // GEMINI API CONFIGURATON
-    const genai = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
+    const genai = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY!);
     const model = genai.getGenerativeModel({
         model:'gemini-pro',
     });

@@ -74,13 +74,6 @@ const ResumeReviewercomp = () => {
       <div className="h-[700px] overflow-x-scroll no-scrollbar w-full md:px-96 px-4">
 
         {
-            ShowLogo && !ShowLoading && (
-                <div className="h-full w-full flex justify-center items-center" >
-                    <Image className="h-16 w-16" src={`/tab.svg`} height={900}width={900} alt="logo" />
-                </div>
-            )
-        }
-        {
             ShowLoading && (
                 <div className="h-full w-full flex justify-center items-center" >
                     <div className="h-6 w-6  bg-white rounded-full animate-ping" ></div>
@@ -92,7 +85,7 @@ const ResumeReviewercomp = () => {
             <div className="flex gap-2 items-center mt-8 ml-4">
             <Image
               className="h-6 w-6"
-              src={`/tab.svg`}
+              src={`/commune.gif`}
               height={900}
               width={900}
               alt="tab"
