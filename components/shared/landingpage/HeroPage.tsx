@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 const HeroPage = () => {
   return (
-    <div className="min-h-screen w-full bg-[url('/bg.png')] bg-cover">
+    <div className="min-h-screen w-full bg-[url('/bg.jpg')] bg-cover">
       <div className="bg-zinc-950 min-h-screen bg-opacity-75 bg-contain">
         <Spotlight
           className="top-0 left-0 md:left-60 md:-top-20"
