@@ -12,7 +12,7 @@ import {
     SelectTrigger,
     SelectValue,
   } from "@/components/ui/select";
-import { genreateLinkedincaption, GenreateRoadMapsWithhelpai } from '@/lib/actions/communeai.action';
+import {GenreateRoadMapsWithhelpai } from '@/lib/actions/communeai.action';
 import ResponseText from './ResponseText';
   
 
@@ -128,7 +128,7 @@ const RaodMapComponent = () => {
           className="mt-4 md:w-[800px] w-full bg-white text-black rounded-full hover:text-white"
         >
           <Sparkles size={17} strokeWidth={1.5} />
-          Genreate Commune AI
+          Generate Commune AI
         </Button>
       </div>
     </div>

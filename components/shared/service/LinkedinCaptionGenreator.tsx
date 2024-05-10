@@ -152,7 +152,7 @@ const LinkedinCaptionGenreator = () => {
           className="mt-4 md:w-[800px] w-full bg-white text-black rounded-full hover:text-white"
         >
           <Sparkles size={17} strokeWidth={1.5} />
-          Genreate With Commune AI
+          Generate With Commune AI
         </Button>
       </div>
       </form>

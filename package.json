@@ -14,7 +14,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@tabler/icons-react": "^3.1.0",
     "@vercel/analytics": "^1.2.2",
-    "ai": "^3.0.16",
+    "ai": "^3.1.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "dompurify": "^3.0.11",

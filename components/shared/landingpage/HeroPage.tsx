@@ -32,11 +32,11 @@ const HeroPage = () => {
               {" "}
               let's start commune.ai
             </span>{" "}
-            genreate anything you want with Commune
+            Generate anything you want with Commune
           </p>
 
           <Link href={`/services`}>
-            <div className="h-16 bg-zinc-950 border-[1px] border-zinc-800 rounded-xl mt-8 flex justify-between items-center md:px-4 px-10 gap-4">
+            <div className="h-16 bg-zinc-950 border-[1px] border-zinc-800 rounded-xl mt-60 flex justify-between items-center md:px-4 px-10 gap-4">
               <p className="text-zinc-400 font-light text-sm md:block hidden">
                 Captions , Cover letter , roadmap and may more
               </p>
@@ -47,7 +47,7 @@ const HeroPage = () => {
                   size={17}
                   strokeWidth={1.4}
                 />
-                Genreate With Commune AI
+                Generate With Commune AI
               </Button>
             </div>
           </Link>

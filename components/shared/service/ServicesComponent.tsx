@@ -7,13 +7,13 @@ const ServicesComponent = () => {
   const serv = [
     {
       name:"Linkedin caption genreator",
-      desc:"Genreate your linkedin caption whenever you want with the help of Commune AI Support and save your valuable time",
+      desc:"Generate your linkedin caption whenever you want with the help of Commune AI Support and save your valuable time",
       link:"/services/linkedin",
       type:"Linkedin"
     },
     {
       name:"Roadmap Genreator",
-      desc:"Genreate your roadmap for any technology whenever you want with the help of Commune AI Support and save your valuable time",
+      desc:"Generate your roadmap for any technology whenever you want with the help of Commune AI Support and save your valuable time",
       link:"/services/roadmap",
       type:"Roadmap"
     },
